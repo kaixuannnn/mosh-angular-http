@@ -17,7 +17,19 @@
   - renders it
   - creates and renders its children
 - Example of Lifecycles hook
+
   - OnInit
   - OnChanges
   - DoCheck
   - AfterContentInit
+
+  5. Unexpected Error
+
+  - Server is offline
+  - Network is down
+  - Unhandled exceptions
+
+  6. Expected
+
+  - "Not found" errors(404)
+  - "Bad request" errors(400)

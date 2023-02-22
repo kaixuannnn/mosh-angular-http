@@ -21,11 +21,20 @@ export class PostsComponent {
     let post: any = { title: input.value };
     input.value = '';
 
-    this.service.createPost(post).subscribe((response: any) => {
-      post['id'] = response.id;
-      this.posts.splice(0, 0, post);
-      console.log(response);
-    });
+    this.service.createPost(post).subscribe(
+      (response: any) => {
+        post['id'] = response.id;
+        this.posts.splice(0, 0, post);
+        console.log(response);
+      },
+      (error: Response) => {
+        if (error.status === 400) {
+        } else {
+          alert('An unexpected error occured.');
+          console.log(error);
+        }
+      }
+    );
   }
 
   updatePost(post: any) {
@@ -35,9 +44,18 @@ export class PostsComponent {
   }
 
   deletePost(post: any) {
-    this.service.deletePost(post).subscribe((response) => {
-      let index = this.posts.indexOf(post);
-      this.posts.splice(index, 1);
-    });
+    this.service.deletePost(post).subscribe(
+      (response) => {
+        let index = this.posts.indexOf(post);
+        this.posts.splice(index, 1);
+      },
+      (error: Response) => {
+        if (error.status === 404) alert('This post had already been deleted.');
+        else {
+          alert('An unexpected error occured.');
+          console.log(error);
+        }
+      }
+    );
   }
 }
