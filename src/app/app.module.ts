@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { PostService } from './services/post.service';
 import { PostsComponent } from './posts/posts.component';
 
 @NgModule({
@@ -16,7 +17,7 @@ import { PostsComponent } from './posts/posts.component';
     ReactiveFormsModule,
     FormsModule,
   ],
-  providers: [],
+  providers: [PostService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
